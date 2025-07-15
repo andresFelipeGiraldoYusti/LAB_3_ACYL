@@ -1,0 +1,25 @@
+.text
+main:
+    	la $t0, 0        	# Posicion inicial del vector ($t0 = 0)
+    	la $t1, 4		# Para subir las posciones del vector ($t1  = 4)
+    	add $t2, $t0, $t1    	# Segunda posicion del vector ($t2 = $t0 + $t1)
+    	la $t3, -1
+    	lw $t4, 0($t0)
+    	lw $t5, 0($t2)
+    	la $t6, 0
+    	la $t7, 1
+  
+loop:
+    	beq $t5, $t3, fin
+    	beq $t4, $t5, contador
+    	
+incrementar:
+	add $t2, $t2, $t1
+    	lw $t5, 0($t2)
+    	j loop
+    
+contador:
+	add $t6, $t6, $t7
+	j incrementar
+
+fin:
